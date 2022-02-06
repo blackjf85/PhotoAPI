@@ -3,6 +3,8 @@ package com.example.photoapi.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.photoapi.R
 import com.example.photoapi.databinding.ItemPhotoBinding
 import com.example.photoapi.model.network.models.Photo
 
@@ -31,6 +33,13 @@ class PhotoAdapter(
             with(binding){
                 titleTv.text = photo.title
                 urlTv.text = photo.url
+
+                val url = "${photo.url}.png"
+
+                Glide.with(photoIv.context)
+                    .load(url)
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .into(photoIv)
             }
         }
     }
